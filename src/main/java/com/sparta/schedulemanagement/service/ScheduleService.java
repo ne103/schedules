@@ -4,6 +4,7 @@ import com.sparta.schedulemanagement.dto.ScheduleRequestDTO;
 import com.sparta.schedulemanagement.dto.ScheduleResponseDTO;
 import com.sparta.schedulemanagement.entity.Schedule;
 import com.sparta.schedulemanagement.repository.ScheduleRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,32 @@ public class ScheduleService {
                 .map(ScheduleResponseDTO::entityToDto)
                 .collect(Collectors.toList());
     }
+
+    public ScheduleResponseDTO update(Long id, ScheduleRequestDTO requestDTO) throws Exception {
+        // DB에서 일정 조회
+        Schedule schedule = scheduleRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 일정이 존재하지 않습니다."));
+
+        // 비밀번호 검증
+        if (!schedule.getPw().equals(requestDTO.getPw())) {
+            throw new Exception("비밀번호가 일치하지 않습니다.");
+        }
+        // 입력한 값으로 해당 일정 수정
+        schedule = Schedule.builder()
+                .scd_id(id)
+                .title(requestDTO.getTitle())
+                .content(requestDTO.getContent())
+                .manager(requestDTO.getManager())
+                .regDate(schedule.getRegDate())
+                .build();
+
+        scheduleRepository.save(schedule);
+
+        return ScheduleResponseDTO.entityToDto(schedule);
+    }
+
+
+
 
 
 }

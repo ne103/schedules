@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 public class ScheduleRequestDTO {
 
-    @NotNull
+    @NotNull(message = "제목을 입력해주세요")
     private String title;
 
     @NotNull
