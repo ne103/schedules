@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/schedules")
@@ -20,6 +22,11 @@ public class ScheduleController {
     public ResponseEntity<ScheduleResponseDTO> getSchedule(@PathVariable Long id) {
         ScheduleResponseDTO responseDTO = scheduleService.getSchedule(id);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public List<ScheduleResponseDTO> getSchedule() {
+        return scheduleService.findAll();
     }
 
     @PostMapping("/create")

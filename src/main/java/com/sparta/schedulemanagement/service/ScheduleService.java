@@ -7,6 +7,9 @@ import com.sparta.schedulemanagement.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class ScheduleService {
@@ -31,5 +34,12 @@ public class ScheduleService {
 
         return ScheduleResponseDTO.entityToDto(schedule);
     }
+
+    public List<ScheduleResponseDTO> findAll() {
+        return scheduleRepository.findAll().stream()
+                .map(ScheduleResponseDTO::entityToDto)
+                .collect(Collectors.toList());
+    }
+
 
 }
