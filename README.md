@@ -1,5 +1,4 @@
-[[<img src="https://capsule-render.vercel.app/api?type=waving&color=89cff0&height=280&section=header&text=Give%20Me%20Lectures&fontColor=ffffff&fontSize=80&animation=twinkling" />](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Spring%20Task)](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Spring%20Task)
-
+[[{https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Spring%20Task}]]
 ## 👋 프로젝트 소개
 나만의 일정 관리 앱 서버 만들기
 
