@@ -57,6 +57,7 @@ public class ScheduleService {
                 .title(requestDTO.getTitle())
                 .content(requestDTO.getContent())
                 .manager(requestDTO.getManager())
+                .pw(schedule.getPw())
                 .regDate(schedule.getRegDate())
                 .build();
 
@@ -65,7 +66,18 @@ public class ScheduleService {
         return ScheduleResponseDTO.entityToDto(schedule);
     }
 
+    public void delete(Long id, String pw) throws Exception {
+        // DB에서 일정 조회
+        Schedule schedule = scheduleRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 일정이 존재하지 않습니다."));
 
+        // 비밀번호 검증
+        if (!schedule.getPw().equals(pw)) {
+            throw new Exception("비밀번호가 일치하지 않습니다.");
+        }
+
+        scheduleRepository.deleteById(id);
+    }
 
 
 

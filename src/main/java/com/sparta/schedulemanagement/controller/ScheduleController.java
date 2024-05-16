@@ -54,4 +54,15 @@ public class ScheduleController {
 
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id, @RequestBody ScheduleRequestDTO requestDTO) {
+        try {
+            scheduleService.delete(id, requestDTO.getPw());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(id + "번 일정 삭제 완료");
+    }
+
 }

@@ -20,4 +20,7 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     Optional<Schedule> findById(Long id);
 
     Schedule save(Schedule schedule);
+
+    // 선택한 일정 삭제
+    void deleteById(Long id);
 }
