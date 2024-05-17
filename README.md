@@ -21,4 +21,8 @@
 
 
 ## 📖 API 명세서
-Swagger로 구현 예정
+![image](https://github.com/ne103/schedules/assets/164742269/8bf5a3ee-b067-464a-863e-b59372ae6f60)
+![image](https://github.com/ne103/schedules/assets/164742269/5794d3bc-86ab-4d95-98a9-24f2a3cd1aac)
+![image](https://github.com/ne103/schedules/assets/164742269/f6ef8bbc-3ac3-4314-b124-99547e8382fb)
+
+추후 Swagger로 구현 예정
