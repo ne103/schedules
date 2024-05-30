@@ -49,4 +49,22 @@ public class CommentServiceImpl implements CommentService {
 
         return comment;
     }
+
+    // 댓글 삭제
+    @Override
+    @Transactional
+    public void delete(Long id, CommentRequestDto dto) {
+        // 댓글이 등록된 일정 조회
+        Long scdId = dto.getScd_id();
+        Schedule schedule = scheduleRepository.findById(scdId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 일정이 존재하지 않습니다."));
+
+        // 삭제할 댓글 엔티티 조회
+        Comment comment = commentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 댓글이 존재하지 않습니다."));
+
+        schedule.removeComment(comment);
+//        commentRepository.deleteById(id);
+
+    }
 }

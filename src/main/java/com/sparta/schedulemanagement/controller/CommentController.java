@@ -2,6 +2,7 @@ package com.sparta.schedulemanagement.controller;
 
 import com.sparta.schedulemanagement.dto.CommentRequestDto;
 import com.sparta.schedulemanagement.dto.CommentResponseDto;
+import com.sparta.schedulemanagement.dto.ScheduleRequestDto;
 import com.sparta.schedulemanagement.entity.Comment;
 import com.sparta.schedulemanagement.service.CommentService;
 import com.sparta.schedulemanagement.service.ScheduleService;
@@ -64,5 +65,17 @@ public class CommentController {
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
+    }
+
+    // 댓글 삭제
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id, @RequestBody CommentRequestDto dto) {
+        try {
+            commentService.delete(id, dto);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); // 일정이 DB에 저장되지 않은 경우
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(id + "번 댓글 삭제 완료");
     }
 }

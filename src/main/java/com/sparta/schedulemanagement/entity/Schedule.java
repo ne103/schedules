@@ -37,4 +37,8 @@ public class Schedule extends BaseTimeEntity{
     public void addComment(Comment comment) {
         commentList.add(comment);
     }
+
+    public void removeComment(Comment comment) {
+        commentList.remove(comment);
+    }
 }
