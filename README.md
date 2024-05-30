@@ -25,8 +25,8 @@
 
 
 ## 📖 API 명세서
-![2](https://github.com/ne103/schedules/assets/164742269/4ac728b9-2a20-4d00-ad58-b634eb68a693)
 ![1](https://github.com/ne103/schedules/assets/164742269/a95b1c3e-188d-44a9-93d1-26df974e4a45)
+![2](https://github.com/ne103/schedules/assets/164742269/4ac728b9-2a20-4d00-ad58-b634eb68a693)
 
 Ssagger
 ![3](https://github.com/ne103/schedules/assets/164742269/b6e3f827-115e-412c-a0f9-986144fa4269)
