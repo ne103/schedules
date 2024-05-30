@@ -1,10 +1,14 @@
 package com.sparta.schedulemanagement.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,4 +30,11 @@ public class Schedule extends BaseTimeEntity{
     private String manager;
 
     private String pw;
+
+    @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Comment> commentList = new ArrayList<>();
+
+    public void addComment(Comment comment) {
+        commentList.add(comment);
+    }
 }

@@ -1,10 +1,12 @@
 package com.sparta.schedulemanagement.dto;
 
+import com.sparta.schedulemanagement.entity.Comment;
 import com.sparta.schedulemanagement.entity.Schedule;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor

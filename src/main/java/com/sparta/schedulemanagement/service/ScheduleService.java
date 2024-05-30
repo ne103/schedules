@@ -4,7 +4,6 @@ import com.sparta.schedulemanagement.dto.ScheduleRequestDTO;
 import com.sparta.schedulemanagement.dto.ScheduleResponseDTO;
 import com.sparta.schedulemanagement.entity.Schedule;
 import com.sparta.schedulemanagement.repository.ScheduleRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
