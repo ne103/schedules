@@ -15,16 +15,18 @@
 - 댓글 등록/수정/삭제
 
 ## 📝 UseCase
-![유스케이스](https://github.com/ne103/schedules/assets/164742269/04707839-f4b7-482e-849a-248ca55f75c7)
+![스케줄_유스케이스](https://github.com/ne103/schedules/assets/164742269/19e37ac9-3f5d-4d5c-9754-a685abc4bfd6)
+
 
 
 ## 📝 ERD DIAGRAM 
-![ERD drawio](https://github.com/ne103/schedules/assets/164742269/1c698813-6dc4-4436-9c0a-3768466f196c)
+![스케줄ERD](https://github.com/ne103/schedules/assets/164742269/bac9a40d-7d18-487f-95fa-c6c8e721c713)
+
 
 
 ## 📖 API 명세서
-![image](https://github.com/ne103/schedules/assets/164742269/f3515e0d-53ab-4ef9-ba1a-4fcc8e2aef59)
-![image](https://github.com/ne103/schedules/assets/164742269/5794d3bc-86ab-4d95-98a9-24f2a3cd1aac)
-![image](https://github.com/ne103/schedules/assets/164742269/f6ef8bbc-3ac3-4314-b124-99547e8382fb)
+![2](https://github.com/ne103/schedules/assets/164742269/4ac728b9-2a20-4d00-ad58-b634eb68a693)
+![1](https://github.com/ne103/schedules/assets/164742269/a95b1c3e-188d-44a9-93d1-26df974e4a45)
 
-추후 Swagger로 구현 예정
+Ssagger
+![3](https://github.com/ne103/schedules/assets/164742269/b6e3f827-115e-412c-a0f9-986144fa4269)
