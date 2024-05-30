@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Builder
-public class ScheduleResponseDTO {
+public class ScheduleResponseDto {
 
     private Long scd_id;
 
@@ -27,8 +27,8 @@ public class ScheduleResponseDTO {
 
     private List<Comment> commentList = new ArrayList<>();
 
-    public static ScheduleResponseDTO entityToDto(Schedule schedule) {
-        return ScheduleResponseDTO.builder()
+    public static ScheduleResponseDto entityToDto(Schedule schedule) {
+        return ScheduleResponseDto.builder()
                 .scd_id(schedule.getScd_id())
                 .title(schedule.getTitle())
                 .content(schedule.getContent())

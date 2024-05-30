@@ -1,27 +1,21 @@
 package com.sparta.schedulemanagement.service;
 
 import com.sparta.schedulemanagement.dto.CommentRequestDto;
-import com.sparta.schedulemanagement.dto.CommentResponseDto;
-import com.sparta.schedulemanagement.dto.CommentRequestDto;
-import com.sparta.schedulemanagement.dto.CommentResponseDto;
 import com.sparta.schedulemanagement.entity.Comment;
 import com.sparta.schedulemanagement.entity.Schedule;
 import com.sparta.schedulemanagement.repository.CommentRepository;
 import com.sparta.schedulemanagement.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class CommentServiceImpl implements CommentService {
 
     private final ScheduleRepository scheduleRepository;
     private final CommentRepository commentRepository;
+
     // 댓글 등록
     @Override
     @Transactional
@@ -38,6 +32,21 @@ public class CommentServiceImpl implements CommentService {
         schedule.addComment(comment);
 
         // 엔티티 반환 -> 해당 메서드가 종료되면 insert 쿼리 수행 및 comment_id 생성
+        return comment;
+    }
+
+    // 댓글 수정
+    @Override
+    @Transactional
+    public Comment update(Long id, CommentRequestDto dto) {
+
+        // 수정할 댓글 엔티티 조회
+        Comment comment = commentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 댓글이 존재하지 않습니다."));
+
+        // 댓글 내용 수정
+        comment.changeComment(dto.getComment());
+
         return comment;
     }
 }

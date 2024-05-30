@@ -1,7 +1,7 @@
 package com.sparta.schedulemanagement.service;
 
-import com.sparta.schedulemanagement.dto.ScheduleRequestDTO;
-import com.sparta.schedulemanagement.dto.ScheduleResponseDTO;
+import com.sparta.schedulemanagement.dto.ScheduleRequestDto;
+import com.sparta.schedulemanagement.dto.ScheduleResponseDto;
 import com.sparta.schedulemanagement.entity.Schedule;
 import com.sparta.schedulemanagement.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,52 +17,52 @@ public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
 
     // 선택한 일정 조회
-    public ScheduleResponseDTO getSchedule(Long id) {
+    public ScheduleResponseDto getSchedule(Long id) {
         Schedule schedule = scheduleRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 일정이 존재하지 않습니다."));
 
-        ScheduleResponseDTO responseDTO = ScheduleResponseDTO.entityToDto(schedule);
+        ScheduleResponseDto responseDto = ScheduleResponseDto.entityToDto(schedule);
 
-        return responseDTO;
+        return responseDto;
     }
 
     // 일정 등록
-    public ScheduleResponseDTO create(ScheduleRequestDTO dto) {
-        Schedule entity = ScheduleRequestDTO.DtoToEntity(dto);
+    public ScheduleResponseDto create(ScheduleRequestDto dto) {
+        Schedule entity = ScheduleRequestDto.DtoToEntity(dto);
 
         Schedule schedule = scheduleRepository.save(entity);
 
-        return ScheduleResponseDTO.entityToDto(schedule);
+        return ScheduleResponseDto.entityToDto(schedule);
     }
 
-    public List<ScheduleResponseDTO> findAll() {
+    public List<ScheduleResponseDto> findAll() {
         return scheduleRepository.findAll().stream()
-                .map(ScheduleResponseDTO::entityToDto)
+                .map(ScheduleResponseDto::entityToDto)
                 .collect(Collectors.toList());
     }
 
-    public ScheduleResponseDTO update(Long id, ScheduleRequestDTO requestDTO) throws Exception {
+    public ScheduleResponseDto update(Long id, ScheduleRequestDto requestDto) throws Exception {
         // DB에서 일정 조회
         Schedule schedule = scheduleRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 일정이 존재하지 않습니다."));
 
         // 비밀번호 검증
-        if (!schedule.getPw().equals(requestDTO.getPw())) {
+        if (!schedule.getPw().equals(requestDto.getPw())) {
             throw new Exception("비밀번호가 일치하지 않습니다.");
         }
         // 입력한 값으로 해당 일정 수정
         schedule = Schedule.builder()
                 .scd_id(id)
-                .title(requestDTO.getTitle())
-                .content(requestDTO.getContent())
-                .manager(requestDTO.getManager())
+                .title(requestDto.getTitle())
+                .content(requestDto.getContent())
+                .manager(requestDto.getManager())
                 .pw(schedule.getPw())
                 .regDate(schedule.getRegDate())
                 .build();
 
         scheduleRepository.save(schedule);
 
-        return ScheduleResponseDTO.entityToDto(schedule);
+        return ScheduleResponseDto.entityToDto(schedule);
     }
 
     public void delete(Long id, String pw) throws Exception {
@@ -77,7 +77,4 @@ public class ScheduleService {
 
         scheduleRepository.deleteById(id);
     }
-
-
-
 }

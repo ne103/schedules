@@ -2,11 +2,8 @@ package com.sparta.schedulemanagement.controller;
 
 import com.sparta.schedulemanagement.dto.CommentRequestDto;
 import com.sparta.schedulemanagement.dto.CommentResponseDto;
-import com.sparta.schedulemanagement.dto.ScheduleRequestDTO;
-import com.sparta.schedulemanagement.dto.ScheduleResponseDTO;
 import com.sparta.schedulemanagement.entity.Comment;
 import com.sparta.schedulemanagement.service.CommentService;
-import com.sparta.schedulemanagement.service.CommentServiceImpl;
 import com.sparta.schedulemanagement.service.ScheduleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -45,6 +42,27 @@ public class CommentController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); // 일정이 DB에 저장되지 않은 경우
         }
+        return ResponseEntity.status(HttpStatus.OK).body(responseDto);
+    }
+
+
+    // 댓글 수정
+    @PutMapping("/{id}")
+    public ResponseEntity update(@PathVariable Long id, @RequestBody CommentRequestDto dto, BindingResult br) {
+        CommentResponseDto responseDto;
+        if (br.getErrorCount() > 0) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Objects.requireNonNull(br.getFieldError()).getDefaultMessage()); // 내용이 비어있을 경우
+        }
+        try {
+            Comment comment = commentService.update(id, dto);
+
+            responseDto = CommentResponseDto.entityToDto(comment);
+
+            ResponseEntity.status(HttpStatus.OK).body(responseDto);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); // 일정이 DB에 저장되지 않은 경우
+        }
+
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
     }
 }

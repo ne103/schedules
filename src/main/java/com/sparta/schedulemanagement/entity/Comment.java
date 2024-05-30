@@ -27,4 +27,9 @@ public class Comment extends BaseTimeEntity{
     @JoinColumn(name = "scd_id", nullable = false)
     private Schedule schedule;
 
+    // 내용 수정하는 메서드(Setter와 동일한 기능)
+    public void changeComment(String comment) {
+        this.comment = comment;
+    }
+
 }
