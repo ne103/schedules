@@ -2,10 +2,9 @@ package com.sparta.schedulemanagement.controller;
 
 import com.sparta.schedulemanagement.dto.CommentRequestDto;
 import com.sparta.schedulemanagement.dto.CommentResponseDto;
-import com.sparta.schedulemanagement.dto.ScheduleRequestDto;
 import com.sparta.schedulemanagement.entity.Comment;
 import com.sparta.schedulemanagement.service.CommentService;
-import com.sparta.schedulemanagement.service.ScheduleService;
+import com.sparta.schedulemanagement.service.ScheduleServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +23,7 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    private final ScheduleService scheduleService;
+    private final ScheduleServiceImpl scheduleService;
 
 
     // 댓글 등록

@@ -2,7 +2,7 @@ package com.sparta.schedulemanagement.controller;
 
 import com.sparta.schedulemanagement.dto.ScheduleRequestDto;
 import com.sparta.schedulemanagement.dto.ScheduleResponseDto;
-import com.sparta.schedulemanagement.service.ScheduleService;
+import com.sparta.schedulemanagement.service.ScheduleServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/schedules")
 public class ScheduleController {
 
-    private final ScheduleService scheduleService;
+    private final ScheduleServiceImpl scheduleService;
 
     @GetMapping("/{id}")
     public ResponseEntity getSchedule(@PathVariable Long id) {
