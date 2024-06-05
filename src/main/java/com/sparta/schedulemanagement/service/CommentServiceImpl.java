@@ -20,18 +20,11 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional
     public Comment create(CommentRequestDto dto) {
-        // 댓글이 등록된 일정 조회
         Long scdId = dto.getScd_id();
         Schedule schedule = scheduleRepository.findById(scdId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 일정이 존재하지 않습니다."));
-
-        // 엔티티로 변환 후
         Comment comment = CommentRequestDto.DtoToEntity(dto, schedule);
-
-        // 댓글 리스트에 추가해주면 DB에 저장된다.
         schedule.addComment(comment);
-
-        // 엔티티 반환 -> 해당 메서드가 종료되면 insert 쿼리 수행 및 comment_id 생성
         return comment;
     }
 
@@ -39,14 +32,9 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional
     public Comment update(Long id, CommentRequestDto dto) {
-
-        // 수정할 댓글 엔티티 조회
         Comment comment = commentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 댓글이 존재하지 않습니다."));
-
-        // 댓글 내용 수정
         comment.changeComment(dto.getComment());
-
         return comment;
     }
 
@@ -54,17 +42,11 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional
     public void delete(Long id, CommentRequestDto dto) {
-        // 댓글이 등록된 일정 조회
         Long scdId = dto.getScd_id();
         Schedule schedule = scheduleRepository.findById(scdId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 일정이 존재하지 않습니다."));
-
-        // 삭제할 댓글 엔티티 조회
         Comment comment = commentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 댓글이 존재하지 않습니다."));
-
         schedule.removeComment(comment);
-//        commentRepository.deleteById(id);
-
     }
 }

@@ -34,7 +34,7 @@ public class ScheduleResponseDto {
                 .content(schedule.getContent())
                 .manager(schedule.getManager())
                 .regDate(schedule.getRegDate())
-                .commentList(schedule.getCommentList() != null ? schedule.getCommentList() : new ArrayList<>())
+//                아 이거 반드시 수정해줘.commentList(schedule.getCommentList() != null ? schedule.getCommentList() : new ArrayList<>())
                 .build();
     }
 }
